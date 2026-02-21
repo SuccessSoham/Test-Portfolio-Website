@@ -54,37 +54,70 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
-    background-image: 
-      radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
-      radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), 
-      radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
-    background-size: 200% 200%;
-    animation: gradient-animation 15s ease infinite;
+    @apply bg-hud-base text-foreground overflow-x-hidden;
   }
 }
 
-@keyframes gradient-animation {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+/* HUD Glassmorphism */
+.hud-glass-card {
+  @apply bg-black/40 backdrop-blur-md border border-white/10 shadow-[0_0_15px_rgba(0,229,255,0.05)] transition-all duration-300 relative;
 }
 
-/* Glassmorphism Utilities */
-.glass {
-  @apply bg-[#050505]/90 backdrop-blur-lg border border-white/20 shadow-xl;
+.hud-glass-card:hover {
+  @apply border-hud-cyan/50 shadow-[0_0_20px_rgba(0,229,255,0.2)];
 }
 
-.glass-card {
-  @apply bg-[#0a0a0a]/85 backdrop-blur-md border border-white/10 shadow-lg hover:bg-[#000000]/95 transition-all duration-300;
+/* Reticle corner markers */
+.reticle-corners::before,
+.reticle-corners::after,
+.reticle-corners-inner::before,
+.reticle-corners-inner::after {
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  transition: all 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+.reticle-corners::before {
+  top: -2px;
+  left: -2px;
+  border-top: 2px solid theme('colors.hud.cyan');
+  border-left: 2px solid theme('colors.hud.cyan');
+}
+.reticle-corners::after {
+  bottom: -2px;
+  right: -2px;
+  border-bottom: 2px solid theme('colors.hud.cyan');
+  border-right: 2px solid theme('colors.hud.cyan');
+}
+.reticle-corners-inner::before {
+  top: -2px;
+  right: -2px;
+  border-top: 2px solid theme('colors.hud.cyan');
+  border-right: 2px solid theme('colors.hud.cyan');
+}
+.reticle-corners-inner::after {
+  bottom: -2px;
+  left: -2px;
+  border-bottom: 2px solid theme('colors.hud.cyan');
+  border-left: 2px solid theme('colors.hud.cyan');
 }
 
-.text-gradient {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-emerald-400;
+.hud-glass-card:hover .reticle-corners::before { top: -6px; left: -6px; opacity: 1; }
+.hud-glass-card:hover .reticle-corners::after { bottom: -6px; right: -6px; opacity: 1; }
+.hud-glass-card:hover .reticle-corners-inner::before { top: -6px; right: -6px; opacity: 1; }
+.hud-glass-card:hover .reticle-corners-inner::after { bottom: -6px; left: -6px; opacity: 1; }
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: theme('colors.hud.base');
+}
+::-webkit-scrollbar-thumb {
+  background: theme('colors.hud.cyan');
+  border-radius: 10px;
 }

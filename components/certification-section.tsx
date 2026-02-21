@@ -32,18 +32,18 @@ export function CertificationSection() {
   ]
 
   return (
-    <section id="certifications" className="py-20 px-4 sm:px-6 lg:px-8 relative">
+    <section id="certifications" className="py-20 px-4 sm:px-6 lg:px-8 relative z-10 font-mono">
       <div className="max-w-7xl mx-auto">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16 bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20"
+          className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-black mb-6">Certifications</h2>
-          <p className="text-lg text-black max-w-2xl mx-auto font-medium">
-            Validating expertise through industry-recognized credentials
+          <h2 className="text-4xl font-bold text-white mb-6 uppercase tracking-widest">[CERT_VERIFICATION]</h2>
+          <p className="text-lg text-hud-cyan/60 max-w-2xl mx-auto">
+            Validating expertise through industry-recognized cryptographic credentials
           </p>
         </motion.div>
 
@@ -55,30 +55,27 @@ export function CertificationSection() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
-              whileHover={{ scale: 1.05 }}
             >
-              <Card className="glass-card border-0 h-full overflow-hidden group">
-                <CardContent className="p-6 flex flex-col items-center text-center h-full">
-                  <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center mb-4 group-hover:bg-emerald-500/20 transition-colors duration-300">
-                    <Award className="w-8 h-8 text-emerald-400" />
-                  </div>
-                  
-                  <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-emerald-300 transition-colors">
-                    {cert.title}
-                  </h3>
-                  
-                  <p className="text-stone-400 mb-1">{cert.issuer}</p>
-                  <p className="text-sm text-stone-500 mb-4">Issued {cert.date}</p>
-                  
-                  <div className="mt-auto pt-4 w-full">
-                     <a href={cert.credentialUrl} target="_blank" rel="noopener noreferrer" className="block w-full">
-                       <Badge variant="secondary" className="bg-white/5 hover:bg-white/10 text-stone-300 w-full justify-center py-1.5 cursor-pointer">
-                          View Credential <ExternalLink className="w-3 h-3 ml-2" />
-                       </Badge>
-                     </a>
-                  </div>
-                </CardContent>
-              </Card>
+              <div className="hud-glass-card h-full p-6 flex flex-col items-center text-center group reticle-corners-inner">
+                <div className="w-16 h-16 border border-hud-cyan/30 bg-hud-cyan/10 flex items-center justify-center mb-6 group-hover:shadow-[0_0_20px_rgba(0,229,255,0.3)] transition-all duration-300 rotate-45">
+                  <Award className="w-8 h-8 text-hud-cyan -rotate-45" />
+                </div>
+                
+                <h3 className="text-lg font-bold text-white mb-2 group-hover:text-hud-cyan transition-colors tracking-wide font-sans">
+                  {cert.title}
+                </h3>
+                
+                <p className="text-hud-cyan/80 mb-1 text-sm">{cert.issuer}</p>
+                <p className="text-xs text-slate-500 mb-6 uppercase tracking-tighter">ISS_DATE: {cert.date}</p>
+                
+                <div className="mt-auto w-full">
+                   <a href={cert.credentialUrl} target="_blank" rel="noopener noreferrer" className="block w-full">
+                     <div className="bg-hud-cyan/10 hover:bg-hud-cyan/20 text-hud-cyan border border-hud-cyan/30 w-full flex items-center justify-center py-2 cursor-pointer transition-all duration-300 text-xs tracking-widest uppercase">
+                        [ VERIFY_CREDENTIAL ] <ExternalLink className="w-3 h-3 ml-2" />
+                     </div>
+                   </a>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>

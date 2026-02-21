@@ -1,134 +1,131 @@
 "use client"
 
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { ExternalLink, Github } from "lucide-react"
-import { Badge } from "@/components/ui/badge"
+import { ExternalLink, Github, Fingerprint, ShieldAlert, Cpu, ActivitySquare } from "lucide-react"
 import { motion } from "framer-motion"
 
 export function ProjectsSection() {
   const projects = [
     {
-      title: "Agentic AI Web Search Summarizer",
+      title: "Sovereign AI Partner: Jarvis",
       description:
-        "A multi-agent Agentic AI system that performs autonomous web searches and summarizes articles, providing concise and relevant information.",
-      image: "/placeholder.svg?height=200&width=400",
-      technologies: ["Python", "AI Agents", "Web Scraping", "LLMs"],
-      liveUrl: "#",
-      githubUrl: "https://github.com/SuccessSoham/agentic_ai_websearch_summarizer",
+        "An autonomous digital partner with a cryptographic Decentralized Identity (DID) using Agentfield. Runs on edge hardware with high-fidelity creative pulses.",
+      icon: <Fingerprint className="w-8 h-8 text-hud-cyan" />,
+      technologies: ["Agentfield", "DID", "Edge AI", "LLMs"],
+      githubUrl: "https://github.com/SuccessSoham/Jarvis",
+      status: "ACTIVE_NODE"
     },
     {
-      title: "AI Multimedia Suite",
+      title: "Enterprise Security Hardening",
       description:
-        "A comprehensive suite for processing and generating multimedia content using advanced AI models.",
-      image: "/placeholder.svg?height=200&width=400",
-      technologies: ["TypeScript", "Multimedia Processing", "AI Models"],
-      liveUrl: "#",
-      githubUrl: "https://github.com/SuccessSoham/AI-Multimedia-Suite",
+        "Critical 'Default Deny' security protocols contributed to the OpenClaw core (PR #16320). Audited by industry leaders for safe LLM tool orchestration.",
+      icon: <ShieldAlert className="w-8 h-8 text-hud-red" />,
+      technologies: ["Security", "OpenClaw", "Protocol Design"],
+      githubUrl: "https://github.com/SuccessSoham/OpenClaw",
+      status: "VERIFIED"
     },
     {
-      title: "Gen AI Notebooks",
+      title: "Quantum Mastery Labs",
       description:
-        "A collection of Google Colab notebooks exploring various Generative AI techniques, model fine-tuning, and experiments.",
-      image: "/placeholder.svg?height=200&width=400",
-      technologies: ["Jupyter Notebook", "Python", "GenAI", "Deep Learning"],
-      liveUrl: "#",
-      githubUrl: "https://github.com/SuccessSoham/Gen-AI",
+        "Hands-on implementation of Quantum circuits including Bell State entanglement and Bloch Sphere visualizations using Qiskit and AWS Braket.",
+      icon: <Cpu className="w-8 h-8 text-hud-cyan" />,
+      technologies: ["Qiskit", "AWS Braket", "Quantum Mechanics"],
+      githubUrl: "https://github.com/SuccessSoham/Quantum-Labs",
+      status: "EXPERIMENTAL"
     },
     {
-      title: "Data Analytics Agent",
+      title: "Cloud Sentinel (Cognizant)",
       description:
-        "An intelligent agent designed for automated data analytics and visualization, turning raw data into actionable insights.",
-      image: "/placeholder.svg?height=200&width=400",
-      technologies: ["Python", "Data Analysis", "Visualization", "Pandas"],
-      liveUrl: "#",
-      githubUrl: "https://github.com/SuccessSoham/Data-Analytics-Agent",
-    },
-    {
-      title: "Resume Analyzer",
-      description:
-        "AI-powered tool to analyze resumes against job descriptions, providing scores and improvement suggestions.",
-      image: "/placeholder.svg?height=200&width=400",
-      technologies: ["Jupyter Notebook", "NLP", "Resume Parsing"],
-      liveUrl: "#",
-      githubUrl: "https://github.com/SuccessSoham/resume-analyzer",
-    },
-    {
-      title: "Cobol to Python",
-      description:
-        "A migration tool or study focusing on modernizing legacy COBOL codebases by converting them to Python.",
-      image: "/placeholder.svg?height=200&width=400",
-      technologies: ["Python", "COBOL", "Legacy Migration"],
-      liveUrl: "#",
-      githubUrl: "https://github.com/SuccessSoham/Cobol-to-Python",
-    },
+        "Proactive AWS monitoring agent utilizing hardened global DIDs to detect usage spikes across CloudWatch/CloudTrail logs.",
+      icon: <ActivitySquare className="w-8 h-8 text-hud-cyan" />,
+      technologies: ["AWS", "CloudWatch", "Event-Driven Analytics"],
+      githubUrl: "https://github.com/SuccessSoham",
+      status: "DEPLOYED"
+    }
   ]
 
   return (
-    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="py-24 px-4 sm:px-6 lg:px-8 relative z-10 font-mono">
       <div className="max-w-7xl mx-auto">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16 bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20"
+          className="mb-16 flex items-end gap-6 border-b border-hud-cyan/20 pb-4"
         >
-          <h2 className="text-4xl font-bold text-black mb-6">Featured Projects</h2>
-          <p className="text-lg text-black max-w-2xl mx-auto font-medium">
-            Exploring the frontiers of AI, Data, and Software Engineering
-          </p>
+          <div className="text-4xl font-bold text-white tracking-widest uppercase">
+            [PROJECT_MANIFEST]
+          </div>
+          <div className="text-sm text-hud-cyan/60 hidden md:block">
+            SCANNING... 4 HIGHSNR TARGETS IDENTIFIED
+          </div>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
           {projects.map((project, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              whileHover={{ 
-                y: -10,
-                rotateX: 5,
-                rotateY: 5,
-                transition: { type: "spring", stiffness: 300 } 
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{
+                duration: 0.8,
+                delay: index * 0.1,
+                type: "spring",
+                stiffness: 100
               }}
-              className="perspective-1000"
+              className="group h-full"
             >
-              <Card className="glass-card border-0 overflow-hidden h-full flex flex-col group">
-                <div className="aspect-video bg-gradient-to-br from-stone-800 to-stone-900 relative overflow-hidden">
-                  <div className="absolute inset-0 bg-stone-900/40 group-hover:bg-transparent transition-colors duration-300" />
-                  <img
-                    src={project.image || "/placeholder.svg"}
-                    alt={project.title}
-                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
-                  />
-                </div>
-                <CardContent className="p-6 space-y-4 flex-grow flex flex-col">
-                  <h3 className="text-xl font-semibold text-white group-hover:text-emerald-300 transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-slate-200 text-sm leading-relaxed flex-grow">
-                    {project.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2 pt-2">
-                    {project.technologies.map((tech, techIndex) => (
-                      <Badge key={techIndex} variant="outline" className="text-xs border-stone-700 text-white bg-white/10">
+              <div className="hud-glass-card h-full p-6 flex flex-col justify-between overflow-hidden">
+                {/* Background scanning effect on hover */}
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-hud-cyan/5 to-transparent h-[200%] -translate-y-[100%] group-hover:animate-scan-line pointer-events-none" />
+
+                <div className="reticle-corners" />
+
+                <div className="space-y-6 relative z-10 flex-grow">
+                  <div className="flex justify-between items-start">
+                    <div className="p-3 border border-hud-cyan/20 bg-black/50 backdrop-blur-sm">
+                      {project.icon}
+                    </div>
+                    <div className={`text-[10px] sm:text-xs tracking-widest px-2 py-1 border backdrop-blur-sm ${
+                      project.status === "VERIFIED" 
+                        ? "text-hud-red bg-hud-red/10 border-hud-red/30 group-hover:animate-glitch" 
+                        : "text-hud-cyan/80 bg-hud-cyan/10 border-hud-cyan/30"
+                    }`}>
+                      STAT: {project.status}
+                    </div>
+                  </div>
+
+                  <div>
+                    <h3 className="text-xl font-bold text-white group-hover:text-hud-cyan transition-colors tracking-wide font-sans">
+                      {project.title}
+                    </h3>
+                    <p className="text-slate-300 text-sm mt-3 leading-relaxed">
+                      {project.description}
+                    </p>
+                  </div>
+
+                  <div className="flex flex-wrap gap-2">
+                    {project.technologies.map((tech, i) => (
+                      <span key={i} className="text-xs text-hud-cyan/60 border border-hud-cyan/20 px-2 py-1 bg-black/40">
                         {tech}
-                      </Badge>
+                      </span>
                     ))}
                   </div>
-                  <div className="flex gap-3 pt-4 mt-auto">
-                    <Button size="sm" variant="outline" className="w-full border-stone-700 text-white hover:bg-slate-800 hover:text-white hover:border-emerald-500/50 transition-all duration-300" asChild>
-                      <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                        <Github className="w-4 h-4 mr-2" />
-                        Code
-                      </a>
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
+                </div>
+
+                <div className="pt-8 relative z-10 mt-auto">
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm text-white hover:text-hud-cyan transition-colors border-b border-transparent hover:border-hud-cyan pb-1"
+                  >
+                    <Github className="w-4 h-4" />
+                    <span>[ ACCESS_SRC ]</span>
+                  </a>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>

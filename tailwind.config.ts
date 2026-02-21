@@ -13,6 +13,11 @@ const config: Config = {
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
+  			hud: {
+  				base: '#050505',
+  				cyan: '#00E5FF',
+  				red: '#FF3D00'
+  			},
   			card: {
   				DEFAULT: 'hsl(var(--card))',
   				foreground: 'hsl(var(--card-foreground))'
@@ -83,11 +88,48 @@ const config: Config = {
   				to: {
   					height: '0'
   				}
+  			},
+  			'scan-line': {
+  				'0%': { transform: 'translateY(-100%)' },
+  				'100%': { transform: 'translateY(100vh)' }
+  			},
+  			'glitch': {
+  				'0%': { transform: 'translate(0)' },
+  				'20%': { transform: 'translate(-2px, 2px)' },
+  				'40%': { transform: 'translate(-2px, -2px)' },
+  				'60%': { transform: 'translate(2px, 2px)' },
+  				'80%': { transform: 'translate(2px, -2px)' },
+  				'100%': { transform: 'translate(0)' }
+  			},
+  			'pulse-glow': {
+  				'0%, 100%': { opacity: '1' },
+  				'50%': { opacity: '0.5' }
+  			},
+  			'pulse-slow': {
+  				'0%, 100%': { opacity: '1' },
+  				'50%': { opacity: '0.7' }
+  			},
+  			'chromatic-glitch': {
+  				'0%': { textShadow: '2px 0 0 #ff3d00, -2px 0 0 #00e5ff', transform: 'translate(0)' },
+  				'20%': { textShadow: '-2px 0 0 #ff3d00, 2px 0 0 #00e5ff', transform: 'translate(-2px, 1px)' },
+  				'40%': { textShadow: '2px 0 0 #ff3d00, -2px 0 0 #00e5ff', transform: 'translate(-2px, -1px)' },
+  				'60%': { textShadow: '-2px 0 0 #ff3d00, 2px 0 0 #00e5ff', transform: 'translate(2px, 1px)' },
+  				'80%': { textShadow: '2px 0 0 #ff3d00, -2px 0 0 #00e5ff', transform: 'translate(2px, -1px)' },
+  				'100%': { textShadow: 'none', transform: 'translate(0)' }
   			}
   		},
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
-  			'accordion-up': 'accordion-up 0.2s ease-out'
+  			'accordion-up': 'accordion-up 0.2s ease-out',
+  			'scan-line': 'scan-line 8s linear infinite',
+  			'glitch': 'glitch 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite',
+  			'pulse-glow': 'pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+  			'pulse-slow': 'pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+  			'chromatic-glitch': 'chromatic-glitch 0.2s ease-in-out infinite'
+  		},
+  		fontFamily: {
+  			sans: ['Archivo', 'sans-serif'],
+  			mono: ['Space Grotesk', 'monospace']
   		}
   	}
   },

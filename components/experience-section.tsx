@@ -44,7 +44,7 @@ export function ExperienceSection() {
   ]
 
   return (
-    <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8 relative">
+    <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8 relative z-10 font-mono">
       <div className="max-w-7xl mx-auto">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -53,15 +53,15 @@ export function ExperienceSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-light text-white mb-6">Experience</h2>
-          <p className="text-lg text-slate-100 max-w-2xl mx-auto">
-            A journey through data-driven innovation and strategic problem-solving
+          <h2 className="text-4xl font-bold text-white mb-6 uppercase tracking-widest">[EXP_MODULES]</h2>
+          <p className="text-lg text-hud-cyan/60 max-w-2xl mx-auto">
+            A history of data-driven innovation and strategic problem-solving
           </p>
         </motion.div>
 
-        <div className="space-y-8 relative">
+        <div className="space-y-12 relative">
            {/* Vertical Timeline Line */}
-           <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-white/10 hidden md:block" />
+           <div className="absolute left-4 top-0 bottom-0 w-[1px] bg-hud-cyan/20 hidden md:block" />
 
           {experiences.map((exp, index) => (
             <motion.div
@@ -70,32 +70,30 @@ export function ExperienceSection() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="relative md:pl-12"
+              className="relative md:pl-16"
             >
               {/* Timeline Dot */}
-              <div className="absolute left-2.5 top-8 w-3 h-3 bg-emerald-500 rounded-full shadow-[0_0_10px_rgba(16,185,129,0.5)] hidden md:block" />
+              <div className="absolute left-2 top-8 w-4 h-4 border border-hud-cyan bg-black rounded-none rotate-45 shadow-[0_0_10px_rgba(0,229,255,0.5)] hidden md:block z-20" />
               
-              <Card className="glass-card border-0 hover:border-white/20 transition-all duration-300">
-                <CardContent className="p-6 sm:p-8">
-                  <div className="flex flex-col lg:flex-row lg:items-start justify-between mb-4 gap-4">
-                    <div>
-                      <h3 className="text-xl font-semibold text-white mb-1 group-hover:text-emerald-300 transition-colors">{exp.title}</h3>
-                      <p className="text-lg text-emerald-400 font-medium mb-2">{exp.company}</p>
-                    </div>
-                    <Badge variant="secondary" className="w-fit bg-white/15 text-white hover:bg-white/25 border-0 px-3 py-1">
-                      {exp.period}
-                    </Badge>
+              <div className="hud-glass-card hover:border-hud-cyan/40 transition-all duration-300 p-6 sm:p-8 reticle-corners-inner">
+                <div className="flex flex-col lg:flex-row lg:items-start justify-between mb-6 gap-4 relative z-10">
+                  <div>
+                    <h3 className="text-xl font-bold text-white mb-1 tracking-wide font-sans">{exp.title}</h3>
+                    <p className="text-lg text-hud-cyan font-medium mb-2">{exp.company}</p>
                   </div>
-                  <p className="text-slate-200 mb-6 leading-relaxed">{exp.description}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {exp.technologies.map((tech, techIndex) => (
-                      <Badge key={techIndex} variant="outline" className="border-white/10 text-slate-100 bg-white/5 hover:bg-white/10 hover:text-white transition-colors">
-                        {tech}
-                      </Badge>
-                    ))}
+                  <div className="w-fit bg-hud-cyan/10 text-hud-cyan border border-hud-cyan/30 px-3 py-1 text-xs tracking-widest">
+                    {exp.period}
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+                <p className="text-slate-300 mb-8 leading-relaxed font-sans relative z-10">{exp.description}</p>
+                <div className="flex flex-wrap gap-2 relative z-10">
+                  {exp.technologies.map((tech, techIndex) => (
+                    <span key={techIndex} className="text-[10px] text-hud-cyan/60 border border-hud-cyan/20 px-2 py-1 bg-black/40 tracking-wider">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>
